@@ -16,7 +16,8 @@ class App extends Component {
       resultsName: '',
       resultsDetails: '',
       resultsID: '',
-      raw: ''
+      raw: '',
+      insert: ''
     }
   }
 
@@ -46,9 +47,22 @@ class App extends Component {
     })
   }
 
+  postName() {
+    axios.post('http://localhost:3001/people', {})
+    .then(function (response) {
+      console.log(response);
+    })
+  }
+
   keyOnChange(e) {
     this.setState({
       keyword: e.target.value
+    })
+  }
+
+  keyOnChangeInput(e) {
+    this.setState({
+      insert: e.target.value
     })
   }
 
@@ -60,6 +74,7 @@ class App extends Component {
           <h1 className="App-title">Welcome to ACSS Node-React Guide</h1>
         </header>
         <div className="row">
+
           <span>SEARCH: </span>
           <div className="row">
             <div className="col s4"/>
@@ -74,11 +89,13 @@ class App extends Component {
             </div>            
             <div className="col s4"/>
           </div>
+
           <span className="row">
             ID : {this.state.resultsID} <br/>
             Details : {this.state.resultsDetails} <br/>
             Name : {this.state.resultsName} <br/>
           </span>
+
           <div className="row">
             <div className="col s4"/>
             <div className="input-field col s4">
@@ -88,9 +105,27 @@ class App extends Component {
             </div>            
             <div className="col s4"/>
           </div>
+
           <span className="row">
             Raw : {this.state.raw} <br/>
           </span>
+
+          <span>POST Name: </span>          
+
+          <div className="row">
+            <div className="col s4"/>
+            <div className="input-field col s2">
+              <input id="input" type="text" className="validate" onChange={this.keyOnChangeInput}/>
+              <label htmlFor="input">Enter Name</label>
+            </div>
+            <div className="input-field col s2">
+              <button className="btn waves-effect waves-light" name="action" onClick={this.postName}>Submit
+                <i className="material-icons right">send</i>
+              </button>
+            </div>            
+            <div className="col s4"/>
+          </div>
+
         </div>
       </div>
     );
