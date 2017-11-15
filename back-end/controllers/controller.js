@@ -4,13 +4,12 @@ const db = require(__dirname + '/../lib/mysql');
 
 exports.post_people = (req, res, next) => {
 	const data = {
-		name: req.query.name,
-		details: req.query.detail
+		name: req.body.data.name,
+		details: req.body.data.detail
 	};
-	console.log(req.query);
 	const query_string = 'INSERT INTO people (name, details) VALUES (?, ?)';
 
-	db.query(query_string, [req.query.name, req.query.details], (err, result) => {
+	db.query(query_string, [req.body.data.name, req.body.data.detail], (err, result) => {
 		res.send(result);
 	});
 };

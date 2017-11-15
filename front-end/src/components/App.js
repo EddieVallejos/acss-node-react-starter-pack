@@ -52,7 +52,7 @@ class App extends Component {
 
   postName() {
     axios.post('http://localhost:3001/people', {
-      params: {
+      data: {
         name: this.state.insert,
         detail: this.state.detail
       }
