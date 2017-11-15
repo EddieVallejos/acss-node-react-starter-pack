@@ -17,7 +17,7 @@ class App extends Component {
       resultsDetails: '',
       resultsID: '',
       raw: '',
-      insert: '',
+      name: '',
       detail: ''
     }
   }
@@ -53,7 +53,7 @@ class App extends Component {
   postName() {
     axios.post('http://localhost:3001/people', {
       data: {
-        name: this.state.insert,
+        name: this.state.name,
         detail: this.state.detail
       }
     })
@@ -70,7 +70,7 @@ class App extends Component {
 
   keyOnChangeInput(e) {
     this.setState({
-      insert: e.target.value
+      name: e.target.value
     })
   }
 
@@ -85,10 +85,10 @@ class App extends Component {
       <div className="App row">
         <header className="App-header row">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to ACSS Node-React Guide</h1>
+          <h1 className="App-title">Welcome to ACSS Node-React Starter App</h1>
         </header>
         <div className="row">
-
+          <div className="row">SAMPLE CRUD</div>
           <span>SEARCH: </span>
           <div className="row">
             <div className="col s4"/>
