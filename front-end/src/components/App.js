@@ -17,7 +17,8 @@ class App extends Component {
       resultsDetails: '',
       resultsID: '',
       raw: '',
-      insert: ''
+      insert: '',
+      detail: ''
     }
   }
 
@@ -29,11 +30,13 @@ class App extends Component {
       }
     })
     .then(function (response) {
-      self.setState({
-        resultsName: response.data[0].name,
-        resultsDetails: response.data[0].details,
-        resultsID: response.data[0].id
-      })
+      if (response.data.length !== 0) {
+        self.setState({
+          resultsName: response.data[0].name,
+          resultsDetails: response.data[0].details,
+          resultsID: response.data[0].id
+        })
+      }
     })
   }
 
@@ -48,7 +51,12 @@ class App extends Component {
   }
 
   postName() {
-    axios.post('http://localhost:3001/people', {})
+    axios.post('http://localhost:3001/people', {
+      params: {
+        name: this.state.insert,
+        detail: this.state.detail
+      }
+    })
     .then(function (response) {
       console.log(response);
     })
@@ -63,6 +71,12 @@ class App extends Component {
   keyOnChangeInput(e) {
     this.setState({
       insert: e.target.value
+    })
+  }
+
+  keyOnChangeInputDetail(e) {
+    this.setState({
+      detail: e.target.value
     })
   }
 
@@ -114,9 +128,13 @@ class App extends Component {
 
           <div className="row">
             <div className="col s4"/>
-            <div className="input-field col s2">
+            <div className="input-field col s1">
               <input id="input" type="text" className="validate" onChange={this.keyOnChangeInput}/>
               <label htmlFor="input">Enter Name</label>
+            </div>
+            <div className="input-field col s1">
+              <input id="detail" type="text" className="validate" onChange={this.keyOnChangeInputDetail}/>
+              <label htmlFor="detail">Enter Detail</label>
             </div>
             <div className="input-field col s2">
               <button className="btn waves-effect waves-light" name="action" onClick={this.postName}>Submit
