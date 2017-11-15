@@ -1,16 +1,18 @@
 'use strict';
 
-const todo = require(__dirname + '/../controllers/controller');
+const people = require(__dirname + '/../controllers/controller');
 
 module.exports = (router) => {
 	
-	router.delete('/todo', todo.delete_todo);
+	router.get('/people', people.get_people);
 
-	router.put('/todo', todo.put_todo);
+	router.get('/peoples', people.get_all_people);
 
-	router.post('/todo', todo.post_todo);
+	router.delete('/people', people.delete_people);
 
-	router.get('/todo', todo.get_all_todo);
+	router.put('/people', people.put_people);
+
+	router.post('/people', people.post_people);
 	
 	router.all('*', (req, res, next) => {
 		res.send({message: 'Unmatched route :('});
