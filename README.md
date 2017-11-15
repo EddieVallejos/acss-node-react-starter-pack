@@ -10,6 +10,7 @@ A repository for the Alliance of Computer Science Students' Members
 * MySQL for Database
 * `sudo apt install npm`
 * `sudo npm install -g nodemon`
+* `sudo npm install -g concurrently`
 * `sudo npm install -g n`
 * `sudo n stable` This part makes sure that our NodeJS version is the stable one.
 * The command "sudo n latest" will download the latest version of Node.js and if the version is not the latest after running the command, run `sudo ln -sf /usr/local/n/versions/node/<VERSION OF NODE>/bin/node /usr/bin/node` 
