@@ -20,9 +20,9 @@ start = () => {
     app = express();
 
     winston.cli();
-    winston.level = config.LOG_LEVEL || 'silly';
+    winston.level = 'info' || 'silly';
 
-    winston.log('info', 'Starting', config.APP_NAME);
+    winston.log('info', 'Starting', "ACSS NodeJS Server");
     // setting the environment for express
     app.set('case sensitive routing', true);
     app.set('x-powered-by', false);
@@ -38,8 +38,8 @@ start = () => {
     app.use(router(express.Router()));
     app.use(helmet);
     // this will start app
-    winston.log('info', 'Server listening on port', config.PORT);
-    return app.listen(config.PORT, config.IP);
+    winston.log('info', 'Server listening on port', 3001);
+    return app.listen(3001, "127.0.0.1");
 
 }
 
