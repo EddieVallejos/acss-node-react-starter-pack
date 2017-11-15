@@ -35,6 +35,7 @@ start = () => {
     app.use(body_parser.urlencoded({extended: true}));
     app.use(body_parser.json());
     app.use(require('compression')());
+    app.use(require('cors')());
     app.use(router(express.Router()));
     app.use(helmet);
     // this will start app

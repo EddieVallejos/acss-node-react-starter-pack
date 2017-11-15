@@ -13,22 +13,37 @@ class App extends Component {
     autobind(this);
     this.state = {
       keyword: '',
-      results: ''
+      resultsName: '',
+      resultsDetails: '',
+      resultsID: '',
+      raw: ''
     }
   }
 
   searchName() {
+    const self = this;
     axios.get('http://localhost:3001/people', {
       params: {
         name: this.state.keyword
       }
     })
     .then(function (response) {
-      console.log(response);
+      self.setState({
+        resultsName: response.data[0].name,
+        resultsDetails: response.data[0].details,
+        resultsID: response.data[0].id
+      })
     })
-    .catch(function (error) {
-      console.log(error);
-    });
+  }
+
+  searchAll() {
+    const self = this;
+    axios.get('http://localhost:3001/peoples', {})
+    .then(function (response) {
+      self.setState({
+        raw: JSON.stringify(response.data)
+      })
+    })
   }
 
   keyOnChange(e) {
@@ -57,8 +72,25 @@ class App extends Component {
                 <i className="material-icons right">send</i>
               </button>
             </div>            
-            <div className="col s4"/>            
+            <div className="col s4"/>
           </div>
+          <span className="row">
+            ID : {this.state.resultsID} <br/>
+            Details : {this.state.resultsDetails} <br/>
+            Name : {this.state.resultsName} <br/>
+          </span>
+          <div className="row">
+            <div className="col s4"/>
+            <div className="input-field col s4">
+              <button className="btn waves-effect waves-light" name="action" onClick={this.searchAll}>List All
+                <i className="material-icons right">send</i>
+              </button>
+            </div>            
+            <div className="col s4"/>
+          </div>
+          <span className="row">
+            Raw : {this.state.raw} <br/>
+          </span>
         </div>
       </div>
     );
