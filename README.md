@@ -26,7 +26,7 @@ To obtain packages that the back-end will be using..
 
 To obtain packages that the front-end will be using..
 * `cd front-end`
-* `bower install`
+* `npm install`
 
 To add npm packages to package.json..
 * `npm install --save <package>`
