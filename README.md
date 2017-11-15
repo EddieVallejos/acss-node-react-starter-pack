@@ -36,12 +36,12 @@ To add npm packages to bower.json..
 * `bower install <package> --save`
 ```
 
-## To start the web server
+## To start the web server and React app
 ------------
 ```
-* `npm start` or `sudo npm start` 
+* `npm start` or `sudo npm start` in the main folder(acss-node-react-starter-pack folder)
 
-then check http://localhost:3000 for the react application and http://localhost:3000
+then check http://localhost:3000 for the react application and http://localhost:3001 for the server
 ```
 ## Conventions (Tip)
 ------------
