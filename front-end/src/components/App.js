@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from './../assets/logo.svg';
+import autobind from 'react-autobind'
 import 'materialize-css/dist/css/materialize.css';
 import 'materialize-css/dist/js/materialize.js';
 import './../css/App.css';
@@ -8,6 +9,7 @@ class App extends Component {
 
   constructor(){
     super();
+    autobind(this);
     this.state = {
       results: ''
     }
