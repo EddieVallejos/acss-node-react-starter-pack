@@ -19,11 +19,16 @@ class App extends Component {
 
   searchName() {
     axios.get('http://localhost:3001/people', {
-      
+      params: {
+        name: this.state.keyword
+      }
     })
-    .then((response) => {
-      
+    .then(function (response) {
+      console.log(response);
     })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 
   keyOnChange(e) {

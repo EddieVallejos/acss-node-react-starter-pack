@@ -18,8 +18,9 @@ exports.post_people = (req, res, next) => {
 
 exports.get_people = (req, res, next) => {
 	const data = {
-		name: req.body.name
+		name: req.query.name
 	};
+	
 	db.query('SELECT * FROM people where name = ?', [data.name], (err, result) => {
 		res.send(result);
 	});
