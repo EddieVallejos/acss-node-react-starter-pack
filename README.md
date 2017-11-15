@@ -22,7 +22,6 @@ A repository for the Alliance of Computer Science Students' Members
 * `cd acss-node-react-starter-pack`
 
 To obtain packages that the back-end will be using..
-* `cd back-end`
 * `npm install`
 
 To obtain packages that the front-end will be using..
